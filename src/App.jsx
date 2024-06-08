@@ -10,17 +10,21 @@ function App() {
   const addTodo = (todo)=>{
     setTodos((prev) => [...prev, {id : Date.now(), ...todo}])
   }
+  
   const updateTodo = (id, todo)=>{
     setTodos((prev) => prev.map((prevTodo) => (prevTodo.id === id ? todo : prevTodo )))
   }
+
   const deleteTodo = (id)=>{
     setTodos((prev) => prev.filter((todo) => {
       return todo.id !== id
     }))
   }
+
   const toggleComplete = (id) => {
     setTodos((prev) => prev.map((todo) => todo.id === id ? {...todo, completed : !todo.completed} : todo))
   }
+
   useEffect(()=>{
     const todos = JSON.parse(localStorage.getItem("todos"))
 

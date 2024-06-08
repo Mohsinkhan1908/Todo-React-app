@@ -3,9 +3,12 @@ import { useTodo } from '../contexts';
 
 function TodoItem({ todo }) {
 
+    //context
     const {updateTodo, deleteTodo, toggleComplete, addTodo} = useTodo()
+
     const [isTodoEditable, setIsTodoEditable] = useState(false)
     const [todoMsg, setTodoMsg] = useState(todo.todo)
+    
     const editTodo = () => {
         updateTodo(todo.id,{...todo, todo:todoMsg})
         setIsTodoEditable(false)
@@ -21,12 +24,14 @@ function TodoItem({ todo }) {
                 todo.completed ? "bg-[#c6e9a7]" : "bg-[#ccbed7]"
             }`}
         >
+            {/* {//checkbox} */}
             <input
                 type="checkbox"
                 className="cursor-pointer"
                 checked={todo.completed}
                 onChange={toggleCompleted}
             />
+            {/* input todo */}
             <input
                 type="text"
                 className={`border outline-none w-full bg-transparent rounded-lg ${
